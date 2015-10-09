@@ -8,6 +8,7 @@
 ;;;	    '(lambda ()
 ;;;	            (yas-minor-mode)))
 
+
 ;;; highlight current line
 ;;;(global-hl-line-mode 1)
 (package-initialize)
@@ -21,16 +22,28 @@
 ;;; line numbering on the left
 (global-linum-mode 1)
 
-(defun startup-echo-area-message ()                           ; Use a more interesting startup message
-  "Dein Wunsch, Meister?")
+(setq line-number-mode t)
+(setq column-number-mode t)
 
 (autoload 'haxe-mode "haxe-mode" "Major mode for editing Lua code." t)
 (add-to-list 'auto-mode-alist '("\\.hx\\'" . haxe-mode))
+(add-to-list 'auto-mode-alist '("Gemfile" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Rakefile" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
+
 (custom-set-variables
- '(custom-enabled-themes (quote (wombat)))
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
+ '(column-number-mode t)
+ '(custom-enabled-themes (quote (misterioso)))
  '(delete-selection-mode nil)
+ '(inhibit-startup-screen t)
  '(mark-even-if-inactive t)
  '(scroll-bar-mode (quote right))
+ '(show-paren-mode t)
  '(transient-mark-mode 1))
 
 (defun decoit-replace-java-umlauts()
@@ -63,3 +76,9 @@
   (decoit-unquote-quotation-marks)
   (decoit-replace-java-umlauts)
 )
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:family "DejaVu Sans Mono" :foundry "unknown" :slant normal :weight normal :height 143 :width normal)))))
