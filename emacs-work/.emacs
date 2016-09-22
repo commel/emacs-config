@@ -25,7 +25,7 @@
 (setq line-number-mode t)
 (setq column-number-mode t)
 
-(autoload 'haxe-mode "haxe-mode" "Major mode for editing Lua code." t)
+(autoload 'haxe-mode "haxe-mode" "Major mode for editing Haxe code." t)
 (add-to-list 'auto-mode-alist '("\\.hx\\'" . haxe-mode))
 (add-to-list 'auto-mode-alist '("Gemfile" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Rakefile" . ruby-mode))
@@ -36,49 +36,21 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ansi-color-names-vector ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(column-number-mode t)
  '(custom-enabled-themes (quote (misterioso)))
  '(delete-selection-mode nil)
  '(inhibit-startup-screen t)
- '(mark-even-if-inactive t)
- '(scroll-bar-mode (quote right))
  '(show-paren-mode t)
- '(transient-mark-mode 1))
-
-(defun decoit-replace-java-umlauts()
-  (interactive)
-  (goto-char (point-min))
-  (replace-string "\\u{fc}" "ü")
-  (goto-char (point-min))
-  (replace-string "\\u{f6}" "ö")
-  (goto-char (point-min))
-  (replace-string "\\u{e4}" "ä")
-  (goto-char (point-min))
-  (replace-string "\\u{df}" "ß")
-)
-
-
-(defun decoit-remove-linebreaks()
-  (interactive)
-  (goto-char (point-min))
-  (replace-string (byte-to-string 10) "")
-)
-
-(defun decoit-unquote-quotation-marks()
-  (goto-char (point-min))
-  (replace-string "\\\"" "\"")
-)
-
-(defun decoit-sanatize-json()
-  (interactive)
-  (decoit-remove-linebreaks)
-  (decoit-unquote-quotation-marks)
-  (decoit-replace-java-umlauts)
-)
+ '(size-indication-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "DejaVu Sans Mono" :foundry "unknown" :slant normal :weight normal :height 143 :width normal)))))
+ '(default ((t (:family "DejaVu Sans Mono" :foundry "unknown" :slant normal :weight bold :height 143 :width normal)))))
+
+(require 'neotree)
+(global-set-key [f8] 'neotree-toggle)
+
+;; cursor in rot
+(set-cursor-color "#ff0000")
